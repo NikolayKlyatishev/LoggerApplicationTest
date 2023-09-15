@@ -16,11 +16,9 @@ public class RequestIdInterceptor implements HandlerInterceptor {
         var parentRequestId = request.getHeader("requestId");
         var requestId = UUID.randomUUID().toString();
 
-        RequestContextHolder.currentRequestAttributes()
-                .setAttribute("requestId", requestId, 0);
+        RequestContextHolder.currentRequestAttributes().setAttribute("requestId", requestId, 0);
         if (parentRequestId != null)
-            RequestContextHolder.currentRequestAttributes()
-                    .setAttribute("parentRequestId", parentRequestId, 0);
+            RequestContextHolder.currentRequestAttributes().setAttribute("parentRequestId", parentRequestId, 0);
 
         return true;
     }
