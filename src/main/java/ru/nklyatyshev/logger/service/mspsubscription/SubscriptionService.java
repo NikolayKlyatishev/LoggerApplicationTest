@@ -5,7 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import ru.nklyatyshev.logger.client.UserClient;
 import ru.nklyatyshev.logger.dao.SubscriptionDao;
-import ru.nklyatyshev.logger.model.SubscriptionDto;
+import ru.nklyatyshev.logger.model.SubscriptionEntity;
 
 import java.util.UUID;
 
@@ -19,16 +19,16 @@ public class SubscriptionService {
     private final SubscriptionDao mspSubscriptionDao;
     private final UserClient userClient;
 
-    public SubscriptionDto getBtId(UUID id) {
+    public SubscriptionEntity getBtId(UUID id) {
         var user = userClient.getResource(UUID.randomUUID());
         return mspSubscriptionDao.findById(id);
     }
 
-    public SubscriptionDto delete(UUID id) {
+    public SubscriptionEntity delete(UUID id) {
         return mspSubscriptionDao.deleteById(id);
     }
 
-    public void saveOrUpdate(SubscriptionDto mspSubscription) {
+    public void saveOrUpdate(SubscriptionEntity mspSubscription) {
         if (isNull(mspSubscription.getId())) {
             mspSubscriptionDao.save(mspSubscription);
         } else {

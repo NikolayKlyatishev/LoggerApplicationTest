@@ -8,7 +8,7 @@ import java.util.UUID;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class SubscriptionDto extends Entity<UUID, SubscriptionDto.MspSubscriptionSqlQueryProvider> {
+public class SubscriptionEntity extends Entity<UUID, SubscriptionEntity.MspSubscriptionSqlQueryProvider> {
     private UUID createdByUserId;
     private Instant createdAt;
     private Boolean deleted;
